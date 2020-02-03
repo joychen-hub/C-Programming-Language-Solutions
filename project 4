@@ -1,0 +1,26 @@
+void reduce(int numerator, int denominator, int *reduced_numerator,
+            int *reduced_denominator);
+
+int main(void) {
+  int a, b, reduced_numerator, reduced_denominator;
+  printf("Enter a fraction: ");
+  scanf("%d/%d", &a, &b);
+  reduce(a, b, &reduced_numerator, &reduced_denominator);
+  printf("In lowest terms: %d/%d\n", reduced_numerator, reduced_denominator);
+}
+  
+void reduce(int numerator, int denominator, int *reduced_numerator, 
+            int *reduced_denominator) {
+  int divisor, gcd;
+  
+  for (divisor = 1; divisor <= numerator && divisor <= denominator; divisor++) {
+    if (numerator % divisor == 0 && denominator % divisor == 0) {
+      gcd = divisor;
+    }
+  }
+  
+  *reduced_numerator = numerator / gcd;
+  *reduced_denominator = denominator / gcd;
+}
+  
+  
